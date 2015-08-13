@@ -31,7 +31,7 @@ end
 
 function Y = shrink(X,threshold)
 
-    Y = sign(X) .* bsxfun(@max,X - threshold,0);
+    Y = sign(X) .* max(abs(X) - threshold,0);
     
 end
 

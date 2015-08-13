@@ -7,7 +7,7 @@ max_it = 100;
 delta = 1e-7;
 
 [m,n] = size(X);
-%rho = 5;  % from the paper: rho = (m*n/4) / norm(X,1);
+rho = 5;  % from the paper: rho = (m*n/4) / norm(X,1);
 lambda = 1 / sqrt(n);
 
 S = zeros(size(X));
@@ -38,7 +38,7 @@ end
 
 function Y = shrink(X,threshold)
 
-    Y = sign(X) .* bsxfun(@max,X - threshold,0);
+    Y = sign(X) .* max(abs(X)-threshold,0);
     
 end
 

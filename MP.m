@@ -12,12 +12,12 @@ U = overDCTdict(D,L*D);
 R = X;
 Z = zeros(L*D,N);
 
-% iterate: find vector in U with smallest scalar product with respect to R,
+% iterate: find vector in U with largest scalar product with respect to R,
 % adjust Residuum R and Code Z
 while (sum(sum(Z~=0) < K) > 0 && norm(X-U*Z) >= tol )% stop when the zero-norm of each column of Z is >= K
     % find best atoms
     SP = U' * R;
-    [maxvec,ind] = max(SP);
+    [maxvec,ind] = max(abs(SP));
     
     % update Z
     vals = sub2ind(size(Z), ind, 1:N);
